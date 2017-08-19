@@ -1,13 +1,19 @@
 # coding: utf-8
+import re
+
+def write_file(text_name, write_text):
+    f = open(text_name, "w")
+    f.write(write_text)
+    f.close()
+    return True
+
+
 def read_num():
-    try:
-        num_input = input()
-        chack_int = int(num_input)
-        ret = list(map(int, list(num_input)))
-    except:
-        print("Please input only int.")
-        ret = None
-    return ret
+    read_str = input()
+    if re.search(r"[^\d,]", read_str):
+        print("Input only num.")
+        return read_num()
+    return read_str
 
 
 def change_num_to_char(num):
@@ -71,36 +77,25 @@ def change_num_to_char(num):
                     "****",
                     "   |",
                     "   *"]
-
     return ret_text
 
 
 def question_1():
-    while True:
-        input_num = read_num()
-        if input_num is None:
-            continue
-        else:
-            break
-
-    print_text = ["", "", "", "", ""]
-
-    for i, a_num in enumerate(input_num):
-        char_text = change_num_to_char(a_num)
-        if i == 0:
-            for j in range(5):
-                print_text[j] += char_text[j]
-        else:
-            for j in range(5):
-                print_text[j] += "  "
-                print_text[j] += char_text[j]
-
-    write_text = "\n".join(print_text)
+    input_num = read_num()
+    print(input_num)
+    # print_text = ["", "", "", "", ""]
+    # for i, char_num in enumerate(input_num):
+    #     char_text = change_num_to_char(int(char_num))
+    #     if i == 0:
+    #         for j in range(5):
+    #             print_text[j] += char_text[j]
+    #     else:
+    #         for j in range(5):
+    #             print_text[j] += " " * 2
+    #             print_text[j] += char_text[j]
+    # write_text = "\n".join(print_text)
     # print(write_text)
-
-    f = open("out1.txt", "w")
-    f.write(write_text)
-    f.close()
+    # write_file("out1.txt", write_text)
 
 
 if __name__ == "__main__":

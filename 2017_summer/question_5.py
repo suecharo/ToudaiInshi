@@ -1,4 +1,5 @@
 # coding: utf-8
+from question_2 import read_file
 from question_2 import change_row_to_col
 
 
@@ -100,11 +101,9 @@ def change_cols_to_rows(col_list):
 
 
 def question_5():
-    f = open("out5.txt", "r")
-    read_text = f.read()
-    f.close
-
+    read_text = read_file("out5.txt")
     read_lines = read_text.split("\n")
+
     max_len_row = max([len(row) for row in read_lines])
     max_len_col = len(read_lines)
     for i in range(max_len_col):
