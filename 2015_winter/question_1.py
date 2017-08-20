@@ -4,15 +4,10 @@ import sys
 sys.setrecursionlimit(10 ** 6)
 
 def read_num():
-    while True:
-        input_num = input()
-        if re.match(r"^.*[/D].*$", input_num):
-            print("Please input only num.")
-            continue
-        else:
-            input_num = int(input_num)
-            break
-
+    input_num = input()
+    if re.search(r"\D", input_num):
+        print("Please input only num.")
+        return read_num()
     return input_num
 
 
@@ -24,7 +19,7 @@ def calc_f(num):
 
 
 def question_1():
-    num = read_num()
+    num = int(read_num())
     print(calc_f(num))
 
 

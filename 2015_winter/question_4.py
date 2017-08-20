@@ -5,7 +5,7 @@ def question_4():
         dp[i] = (161 * dp[i - 1] + 2457) % (2 ** 24)
 
     print(dp[10 ** 6])
-    print(dp)
+    # print(dp)
 
 
 if __name__ == "__main__":
